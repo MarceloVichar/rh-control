@@ -21,9 +21,9 @@ public class Employee implements BaseEntity{
 	@Column(name = "email")
 	private String email;
 	@Column(name = "departament")
-	private Departament departamentId;
+	private String departamentId;
 	@Column(name = "role")
-	private Role role;
+	private String role;
 	public long getId() {
 		return id;
 	}
@@ -48,16 +48,16 @@ public class Employee implements BaseEntity{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Departament getDepartamentId() {
+	public String getDepartamentId() {
 		return departamentId;
 	}
-	public void setDepartamentId(Departament departamentId) {
+	public void setDepartamentId(String departamentId) {
 		this.departamentId = departamentId;
 	}
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 }

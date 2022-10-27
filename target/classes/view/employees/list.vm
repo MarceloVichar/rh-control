@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+
+	<link rel='stylesheet' href='/global.css' />
+
+</HEAD>
+
+<BODY>
+	<header>
+        <span class="logo">SISTEMA RH</span>
+        <span>Empregados</span>
+    </header>
+    
+    <main>
+    	<div class="exitButtonContainer">
+    		<a href="/">
+            	<button class="btn btn-red">Voltar</button>
+        	</a>
+    	</div>
+        <div class="listHeader">
+            <h1>Listagem de empregados</h1>
+            <a href="/employees">
+                <button class="btn btn-blue">Novo empregado</button>
+            </a>
+        </div>
+        #foreach($employee in $allemployees)
+			<a href="/employee/$employee.getId()" class="item">
+				<div>
+		 			<span>ID: $employee.getId()</span>
+            		<span>Nome: $employee.getName()</span>
+				</div> 
+    		</a>
+		#end
+        
+    </main>
+
+
+</BODY>
+
+</HTML>

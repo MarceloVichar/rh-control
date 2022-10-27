@@ -6,6 +6,7 @@ import java.util.List;
 
 import dao.GenericDao;
 import dao.StudentDao;
+import model.Employee;
 import model.Student;
 import spark.ModelAndView;
 import spark.Request;
@@ -35,6 +36,8 @@ public class Main {
 		get("/student/:id", Main::pageDetail, engine);
 		get("/students/new", Main::pageNew, engine);
 		post("/students", Main::createStudent);
+		
+		get("/employees", Main::pageEmployees, engine);
 
 	}
 
@@ -49,6 +52,15 @@ public class Main {
 		model.put("allstudents", genericDao.listAll(student));
 
 		return new ModelAndView(model, "view/home.vm");
+	}
+	
+	private static ModelAndView pageEmployees(Request req, Response res) {
+		HashMap<String, Object> model = new HashMap();
+		GenericDao<Employee> genericDao = new GenericDao<Employee>();
+		Employee employee = new Employee();
+		model.put("allemployees", genericDao.listAll(employee));
+
+		return new ModelAndView(model, "view/employees/list.vm");
 	}
 
 	private static ModelAndView pageDetail(Request req, Response res) {

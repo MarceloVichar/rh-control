@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import model.Departament;
+import model.Employee;
+import model.Role;
 import model.Student;
 
 public class HibernateUtil {
@@ -30,6 +33,9 @@ public class HibernateUtil {
 //				settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 				
 				configuration.setProperties(settings);
+				configuration.addAnnotatedClass(Departament.class);
+				configuration.addAnnotatedClass(Role.class);
+				configuration.addAnnotatedClass(Employee.class);
 				configuration.addAnnotatedClass(Student.class);
 				
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

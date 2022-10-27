@@ -2,28 +2,42 @@
 <HEAD>
 
 	<link rel='stylesheet' href='/global.css' />
+	<link rel='stylesheet' href='/home.css' />
 
 </HEAD>
 
 <BODY>
-<h1>ola</h1>
+	<header>
+        <span class="logo">SISTEMA RH</span>
+        <span>Início</span>
+    </header>
 
+	<main>
+        <div class="mainContainer">
+            <h1>Seja bem vindo ao painel de administração do RH da empresa</h1>
+            <h2>Acesse as funcionalidades abaixo para gerenciar o quadro da sua empresa</h2>
+            <div class="actions">
+                <a href="/employees">
+                    <button class="btn btn-blue">Empregados</button>
+                </a>
+                <a href="/employees">
+                    <button class="btn btn-purple">Departamentos</button>
+                </a>
+                <a href="/employees">
+                    <button class="btn btn-green">Níveis de experiência</button>
+                </a>
+            </div>
+        </div>
+    </main>
 
 #foreach($student in $allstudents)
 
-
-	<a href="/student/$student.getId()" class="List-item">
+	<a href="/student/$student.getId()" class="">
         $student.getId() - $student.getName() 
     </a>
 
-
 #end
-	
-
-	<a href="/students/new"  class="create-student">CREATE NEW STUDENT</a>
-
-
-
+	<a href="/students/new"  class="">CREATE NEW STUDENT</a>
 
 </BODY>
 
