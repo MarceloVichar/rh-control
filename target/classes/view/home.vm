@@ -20,10 +20,10 @@
                 <a href="/employees">
                     <button class="btn btn-blue">Empregados</button>
                 </a>
-                <a href="/employees">
+                <a href="/departaments">
                     <button class="btn btn-purple">Departamentos</button>
                 </a>
-                <a href="/employees">
+                <a href="/roles">
                     <button class="btn btn-green">Níveis de experiência</button>
                 </a>
             </div>

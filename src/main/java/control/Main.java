@@ -6,7 +6,9 @@ import java.util.List;
 
 import dao.GenericDao;
 import dao.StudentDao;
+import model.Departament;
 import model.Employee;
+import model.Role;
 import model.Student;
 import spark.ModelAndView;
 import spark.Request;
@@ -38,19 +40,15 @@ public class Main {
 		post("/students", Main::createStudent);
 		
 		get("/employees", Main::pageEmployees, engine);
+		
+		get("/departaments", Main::pageDepartaments, engine);
+		
+		get("/roles", Main::pageRoles, engine);
 
 	}
 
 	private static ModelAndView pageHome(Request req, Response res) {
 		HashMap<String, Object> model = new HashMap();
-
-		// teste hashmap
-//		model.put("username", "Emerson");
-//		model.put("pass", 12345);
-		GenericDao<Student> genericDao = new GenericDao<Student>();
-		Student student = new Student();
-		model.put("allstudents", genericDao.listAll(student));
-
 		return new ModelAndView(model, "view/home.vm");
 	}
 	
@@ -61,6 +59,24 @@ public class Main {
 		model.put("allemployees", genericDao.listAll(employee));
 
 		return new ModelAndView(model, "view/employees/list.vm");
+	}
+	
+	private static ModelAndView pageDepartaments(Request req, Response res) {
+		HashMap<String, Object> model = new HashMap();
+		GenericDao<Departament> genericDao = new GenericDao<Departament>();
+		Departament departament = new Departament();
+		model.put("alldepartaments", genericDao.listAll(departament));
+
+		return new ModelAndView(model, "view/departaments/list.vm");
+	}
+
+	private static ModelAndView pageRoles(Request req, Response res) {
+		HashMap<String, Object> model = new HashMap();
+		GenericDao<Role> genericDao = new GenericDao<Role>();
+		Role role = new Role();
+		model.put("allroles", genericDao.listAll(role));
+
+		return new ModelAndView(model, "view/roles/list.vm");
 	}
 
 	private static ModelAndView pageDetail(Request req, Response res) {
