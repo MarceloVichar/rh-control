@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+
+	<link rel='stylesheet' href='/global.css' />
+
+</HEAD>
+
+<BODY>
+<h1>ola</h1>
+
+
+#foreach($student in $allstudents)
+
+
+	<a href="/student/$student.getId()" class="List-item">
+        $student.getId() - $student.getName() 
+    </a>
+
+
+#end
+	
+
+	<a href="/students/new"  class="create-student">CREATE NEW STUDENT</a>
+
+
+
+
+</BODY>
+
+</HTML>

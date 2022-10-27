@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+    <link rel='stylesheet' href='/global.css' />
+</HEAD>
+
+<BODY>
+<h1>New Student</h1>
+
+<form method="post" action="/students">
+
+	<label for="name">NAME</label>
+	<input type="text"	id="name" name="name" placeholder="name" />
+    <br>
+    <label for="name">AGE</label>
+	<input type="text"	id="age" name="age" placeholder="ag	e" /> 
+    <br>	
+    <label for="name">E-MAIL</label>
+	<input type="text"	id="email" name="email" placeholder="email" /> 
+	 <br>
+	
+	<input type="submit" value="Create" class="submit"/>
+
+</form>
+
+</BODY>
+
+</HTML>

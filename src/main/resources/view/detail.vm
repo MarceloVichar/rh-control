@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+
+	<link rel='stylesheet' href='/global.css' />
+
+</HEAD>
+
+<BODY>
+<h1>Student $student.getId() details</h1>
+
+<h2> você acaba de passar de ano </h2>
+
+
+<div class="student-details">
+	
+        <span> ID: $student.getId() </span> 
+        <span> NAME: $student.getName() </span>
+    
+</div>
+
+
+</BODY>
+
+</HTML>

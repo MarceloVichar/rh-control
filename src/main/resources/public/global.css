@@ -1,0 +1,82 @@
+* {
+	font-family: sans-serif;
+	background-color: #e3e3e3;
+	color: #434343;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	display: flex;
+    flex-direction: column;
+}
+
+h1 {
+	color: #e3e3e3;
+	background-color: #434343;
+	padding: 8pt;
+	margin-bottom: 16pt;
+}
+
+a {
+	text-decoration: none;
+}
+
+.List-item{
+    background-color: white;
+    padding: 4pt;
+    margin: 4pt;
+    border-radius: 4pt;
+}
+
+.create-student {
+	background: cadetblue;
+	color: #e3e3e3;
+	padding: 8pt;
+	margin-top: 16pt;
+	border-radius: 8pt;
+	margin-left: 4pt;
+	margin-right: 4pt;
+}
+
+.student-details{
+    background-color: white;
+    padding: 4pt;
+    margin: 4pt;
+    border-radius: 4pt;	
+    display: flex;
+    flex-direction: column;
+}
+.student-details > span{
+    background-color: white;
+    margin-top: 4pt;
+}
+
+h2 {
+	margin-left: 4pt;
+}
+
+form {
+    background-color: white;
+    padding: 4pt;
+    margin: 4pt;
+    border-radius: 4pt;	
+    display: flex;
+    flex-direction: column;
+}
+form > label {
+	background-color: white;
+}
+
+form > input {
+	border: 0;
+	padding: 4pt;
+	border-radius: 4pt;
+}
+
+.submit {
+	background: cadetblue;
+	color: #e3e3e3;
+	padding: 8pt;
+	border-radius: 8pt;
+}
