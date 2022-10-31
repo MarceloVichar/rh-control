@@ -8,7 +8,7 @@
 <BODY>
 	<header>
         <span class="logo">SISTEMA RH</span>
-        <span>Níveis de experiência</span>
+        <span>Benefícios extras</span>
     </header>
     
     <main>
@@ -18,16 +18,16 @@
         	</a>
     	</div>
         <div class="listHeader">
-            <h1>Listagem de níveis de experiência</h1>
+            <h1>Listagem de benefícios extras</h1>
             <a href="/employees">
-                <button class="btn btn-blue">Novo nível</button>
+                <button class="btn btn-blue">Novo benefício</button>
             </a>
         </div>
-        #foreach($role in $allroles)
-			<a href="/roles/$role.getId()" class="item">
+        #foreach($extrabenefit in $allextrabenefits)
+			<a href="/roles/$extrabenefit.getId()" class="item">
 				<div>
-		 			<span>ID: $role.getId()</span>
-            		<span>Nome: $role.getName()</span>
+		 			<span>ID: $extrabenefit.getId()</span>
+            		<span>Nome: $extrabenefit.getName()</span>
 				</div> 
     		</a>
 		#end

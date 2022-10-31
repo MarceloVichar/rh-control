@@ -23,8 +23,11 @@
                 <a href="/departaments">
                     <button class="btn btn-purple">Departamentos</button>
                 </a>
-                <a href="/roles">
-                    <button class="btn btn-green">Níveis de experiência</button>
+                <a href="/basic-benefits">
+                    <button class="btn btn-green">Benefícios básicos</button>
+                </a>
+                <a href="/extra-benefits">
+                    <button class="btn btn-green">Benefícios extras</button>
                 </a>
             </div>
         </div>

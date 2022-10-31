@@ -10,7 +10,9 @@ import org.hibernate.service.ServiceRegistry;
 
 import model.Departament;
 import model.Employee;
-import model.Role;
+import model.ExtraBenefit;
+import model.BasicBenefit;
+import model.Benefit;
 import model.Student;
 
 public class HibernateUtil {
@@ -34,7 +36,8 @@ public class HibernateUtil {
 				
 				configuration.setProperties(settings);
 				configuration.addAnnotatedClass(Departament.class);
-				configuration.addAnnotatedClass(Role.class);
+				configuration.addAnnotatedClass(BasicBenefit.class);
+				configuration.addAnnotatedClass(ExtraBenefit.class);
 				configuration.addAnnotatedClass(Employee.class);
 				configuration.addAnnotatedClass(Student.class);
 				

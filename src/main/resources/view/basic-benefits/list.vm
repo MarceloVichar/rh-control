@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+
+	<link rel='stylesheet' href='/global.css' />
+
+</HEAD>
+
+<BODY>
+	<header>
+        <span class="logo">SISTEMA RH</span>
+        <span>Benefícios básicos</span>
+    </header>
+    
+    <main>
+    	<div class="exitButtonContainer">
+    		<a href="/">
+            	<button class="btn btn-red">Voltar</button>
+        	</a>
+    	</div>
+        <div class="listHeader">
+            <h1>Listagem de benefícios básicos</h1>
+            <a href="/employees">
+                <button class="btn btn-blue">Novo benefício</button>
+            </a>
+        </div>
+        #foreach($basicbenefit in $allbasicbenefits)
+			<a href="/roles/$basicbenefit.getId()" class="item">
+				<div>
+		 			<span>ID: $basicbenefit.getId()</span>
+            		<span>Nome: $basicbenefit.getName()</span>
+				</div> 
+    		</a>
+		#end
+    </main>
+
+
+</BODY>
+
+</HTML>

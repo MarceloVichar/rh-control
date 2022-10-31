@@ -3,109 +3,104 @@ package dao;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import model.Role;
+import model.ExtraBenefit;
 import util.HibernateUtil;
 
-public class RoleDao {
+public class ExtraBenefitDao {
 
-	public void saveRole(Role role) {
+	public void saveExtraBenefit(ExtraBenefit extraBenefit) {
 		
 		Transaction transaction = null;
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			session.save(role);
+			session.save(extraBenefit);
 			transaction.commit();
 			
 		} catch (Exception e) {
 			if(transaction != null) {
 				transaction.rollback();
-			    System.out.println("Não foi possível cadastrar o nível de experiência");
+			    System.out.println("Não foi possível cadastrar o benefício");
 			}
 		}
 	}
-public void updateRole(Role role) {
+public void updateExtraBenefit(ExtraBenefit extraBenefit) {
 		
 		Transaction transaction = null;
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			session.saveOrUpdate(role);
+			session.saveOrUpdate(extraBenefit);
 			transaction.commit();
 			
 			
 		} catch (Exception e) {
 			if(transaction != null) {
 				transaction.rollback();
-			    System.out.println("Não foi possível atualizar o nível de experiência");
+			    System.out.println("Não foi possível atualizar o benefício");
 			}
 		}
 	}
-public Role getRoleById(long id) {
+public ExtraBenefit getExtraBenefitById(long id) {
 	
 	Transaction transaction = null;
-	Role role = null;
+	ExtraBenefit extraBenefit = null;
 	try {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
-		role = session.get(Role.class, id);
+		extraBenefit = session.get(ExtraBenefit.class, id);
 		transaction.commit();
 		
 		
 	} catch (Exception e) {
 		if(transaction != null) {
 			transaction.rollback();
-		    System.out.println("Não foi possível buscar o nível de experiência com id " + id);
+		    System.out.println("Não foi possível buscar o benefício com id " + id);
 		}
 	}
-	return role;
+	return extraBenefit;
 }
 
-public List<Role> listAllRoles() {
+public List<ExtraBenefit> listAllExtraBenefit() {
 	
 	Transaction transaction = null;
-	List<Role> roles = null;
+	List<ExtraBenefit> extraBenefit = null;
 	try {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		transaction = session.beginTransaction();
-		roles = session.createQuery("from role").list();
+		extraBenefit = session.createQuery("from extraBenefit").list();
 		transaction.commit();
-		
 		
 	} catch (Exception e) {
 		if(transaction != null) {
 			transaction.rollback();
-		    System.out.println("Não foi possível listar os níveis de experiência");
+		    System.out.println("Não foi possível listar os benefícios");
 		}
 	}
 	
-	return roles;
+	return extraBenefit;
 }
 
-public void deleteRole(long id) {
+public void deleteBasicBenefit(long id) {
 	
 	Transaction transaction = null;
-	Role role = null;
+	ExtraBenefit extraBenefit = null;
 	
 	try {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		//start the transaction
 		transaction = session.beginTransaction();
-		//delete the studendt object
-		role = session.get(Role.class, id);
-		session.delete(role);
+		extraBenefit = session.get(ExtraBenefit.class, id);
+		session.delete(extraBenefit);
 		
-		//commit the transaction
 		transaction.commit();
 		
 		
 	} catch (Exception e) {
 		if(transaction != null) {
 			transaction.rollback();
-		    System.out.println("Erro ao remover nível de experiência");
+		    System.out.println("Erro ao remover benefício");
 		}
 	}
 }
