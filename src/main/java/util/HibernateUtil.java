@@ -12,7 +12,6 @@ import model.Departament;
 import model.Employee;
 import model.ExtraBenefit;
 import model.BasicBenefit;
-import model.Benefit;
 import model.Student;
 
 public class HibernateUtil {
@@ -25,7 +24,7 @@ public class HibernateUtil {
 				// equivalente ao hibernate.cfg.xml
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/loo20222");
+				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/banconovo");
 				settings.put(Environment.USER, "covid");
 				settings.put(Environment.PASS, "febre");
 				settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
