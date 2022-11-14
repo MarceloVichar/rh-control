@@ -16,7 +16,6 @@ import javax.persistence.Table;
 
 public class ExtraBenefit extends Benefit {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "extra_benefit_id")
 	private long id;
 	

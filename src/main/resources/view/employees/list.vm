@@ -19,7 +19,7 @@
     	</div>
         <div class="listHeader">
             <h1>Listagem de empregados</h1>
-            <a href="/employees">
+            <a href="/employees/new">
                 <button class="btn btn-blue">Novo empregado</button>
             </a>
         </div>
@@ -30,6 +30,12 @@
             		<span>Nome: $employee.getName()</span>
 				</div> 
     		</a>
+		#end
+		
+		#foreach($en in $allenums)
+				<div>
+		 			<span>$en</span>
+				</div> 
 		#end
     </main>
 

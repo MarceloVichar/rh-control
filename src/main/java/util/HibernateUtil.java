@@ -38,7 +38,7 @@ public class HibernateUtil {
 				configuration.addAnnotatedClass(BasicBenefit.class);
 				configuration.addAnnotatedClass(ExtraBenefit.class);
 				configuration.addAnnotatedClass(Employee.class);
-				configuration.addAnnotatedClass(Student.class);
+//				configuration.addAnnotatedClass(Student.class);
 				
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);

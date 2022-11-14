@@ -18,6 +18,7 @@ public class Main {
 		post("/students", StudentController::createStudent);
 		
 		get("/employees", EmployeeController::pageEmployees, engine);
+		get("/employees/new", EmployeeController::newEmployee, engine);
 		
 		get("/departaments", DepartamentController::pageDepartaments, engine);
 		

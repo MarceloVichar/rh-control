@@ -24,6 +24,12 @@ public class Departament implements BaseEntity{
 	@Column(name = "name")
 	private String name;
 	
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 	@OneToMany(
 		mappedBy = "departament",
 		cascade = CascadeType.ALL,

@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+
+	<link rel='stylesheet' href='/global.css' />
+
+</HEAD>
+
+<BODY>
+	<header>
+        <span class="logo">SISTEMA RH</span>
+        <span>Empregados</span>
+    </header>
+    
+    <main>		
+		#foreach($en in $allenums)
+				<div>
+		 			<span>$en</span>
+				</div> 
+		#end
+    </main>
+
+
+</BODY>
+
+</HTML>

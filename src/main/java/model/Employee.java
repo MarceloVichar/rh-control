@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.Table;
 
+import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,9 +26,9 @@ public class Employee implements BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private long employeeId;
+	private long id;
 	
-	@Column(name = "name")
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	@Column(name = "age")
@@ -35,6 +36,12 @@ public class Employee implements BaseEntity{
 	
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "phone")
+	private String phone;
+	
+	@Column(name = "salary", nullable = false)
+	private double salary;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Departament departament;
@@ -57,35 +64,107 @@ public class Employee implements BaseEntity{
         inverseJoinColumns = { @JoinColumn(name = "extra_benefit_id") }
     )
     Set<ExtraBenefit> extraBenefits = new HashSet<>();
-	
+
 	public long getId() {
-		return employeeId;
+		return id;
 	}
+
 	public void setId(long id) {
-		this.employeeId = id;
+		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Departament getDepartament() {
+		return departament;
+	}
+
+	public void setDepartament(Departament departament) {
+		this.departament = departament;
+	}
+
 	public RolesEnum getRole() {
 		return role;
 	}
+
 	public void setRole(RolesEnum role) {
 		this.role = role;
 	}
+
+	public Set<BasicBenefit> getBasicBenefits() {
+		return basicBenefits;
+	}
+
+	public void setBasicBenefits(Set<BasicBenefit> basicBenefits) {
+		this.basicBenefits = basicBenefits;
+	}
+
+	public Set<ExtraBenefit> getExtraBenefits() {
+		return extraBenefits;
+	}
+
+	public void setExtraBenefits(Set<ExtraBenefit> extraBenefits) {
+		this.extraBenefits = extraBenefits;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	public String getFormattedSalary() {
+		DecimalFormat df = new DecimalFormat("#,###.00");
+		String formattedSalary;
+		
+		try {
+			formattedSalary = "R$" + df.format(this.salary);
+		}
+		catch (NullPointerException e) {
+			System.out.println("O salário não pode ser formatado, pois não possui um valor válido");
+			formattedSalary = "Nada consta";
+		}
+		
+		return formattedSalary;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", email=" + email + ", phone=" + phone
+				+ ", salary=" + salary + ", departament=" + departament + ", role=" + role + ", basicBenefits="
+				+ basicBenefits + ", extraBenefits=" + extraBenefits + "]";
+	}
+	
 }

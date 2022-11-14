@@ -17,10 +17,17 @@ import javax.persistence.Table;
 public class BasicBenefit extends Benefit {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "basic_benefit_id")
 	private long id;
 	
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
+	}
+
 	@ManyToMany(mappedBy = "basicBenefits")
     private Set<Employee> employees = new HashSet<>();
 	
