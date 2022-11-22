@@ -1,39 +1,84 @@
 package control;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import com.google.protobuf.Any;
+
 import dao.GenericDao;
+import model.BasicBenefit;
 import model.Departament;
 import model.Employee;
+import model.ExtraBenefit;
 import model.RolesEnum;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import util.MyException;
 
 public class EmployeeController {
 	protected static ModelAndView pageEmployees(Request req, Response res) {
 		HashMap<String, Object> model = new HashMap<String, Object>();
 		GenericDao<Employee> genericDao = new GenericDao<Employee>();
 		Employee employee = new Employee();
-		model.put("allemployees", genericDao.listAll(employee));
+		List<Employee> allemployees = genericDao.listAll(employee);
+		model.put("allemployees", allemployees);
+		
+		double totalOfSalaries = 0;
+		
+		try {
+			if (allemployees == null) {
+					throw new MyException("A lista está vazia e não pode ser percorrida");
+			}
+			
+			Iterator<Employee> it = allemployees.iterator();
+
+			while (it.hasNext()) {
+				totalOfSalaries += it.next().getSalary();
+			}
+		} catch (MyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			totalOfSalaries = 0;
+		} catch (NullPointerException e) {
+			totalOfSalaries = 0;
+		}
+		
+		model.put("totalsalaries", totalOfSalaries);
+		model.put("now", "data");
+		
 		
 		new Thread() {
 			@Override
 			public void run() {
+
+				synchronized (this) {
+					while (true) {
+						try {
+							wait(1000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+												
+						Date date = Calendar.getInstance().getTime();  
+						DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+						String currentDate = dateFormat.format(date);
 				
-				double totalOfSalaries = 0;
-				
-				List<Employee> employeeList = genericDao.listAll(employee);
-				Iterator<Employee> it = employeeList.iterator();
-				
-				while(it.hasNext()) {
-					totalOfSalaries += it.next().getSalary();
+//						System.out.println(currentDate);
+						
+						model.replace("now", currentDate);
+						
+
 					}
-				
-				model.put("totalsalaries", totalOfSalaries);
+				}
 			}
 		}.start();
 
@@ -47,6 +92,14 @@ public class EmployeeController {
 		Departament departament = new Departament();
 		model.put("alldepartaments", genericDepartament.listAll(departament));
 
+		GenericDao<ExtraBenefit> genericExtraBenefit = new GenericDao<ExtraBenefit>();
+		ExtraBenefit extraBenefit = new ExtraBenefit();
+		model.put("allextrabenefits", genericExtraBenefit.listAll(extraBenefit));
+
+		GenericDao<BasicBenefit> genericBasicenefit = new GenericDao<BasicBenefit>();
+		BasicBenefit basicBenefit = new BasicBenefit();
+		model.put("allbasicbenefits", genericBasicenefit.listAll(basicBenefit));
+
 		ArrayList<String> rolesList = new ArrayList<String>();
 
 		RolesEnum roles[] = RolesEnum.values();
@@ -56,8 +109,6 @@ public class EmployeeController {
 		}
 
 		Iterator<String> it = rolesList.iterator();
-
-		System.out.println("Esses são os níveis de empregados disponíveis no momento de cadastrar um novo empregado");
 
 		while (it.hasNext()) {
 			System.out.println(it.next().toLowerCase());

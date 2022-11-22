@@ -28,13 +28,16 @@
 				<div>
 		 			<span>ID: $employee.getId()</span>
             		<span>Nome: $employee.getName()</span>
+            		<span> Salário: $employee.getFormattedSalary()</span>
 				</div> 
     		</a>
 		#end
 		
-		#foreach($en in $allenums)
+		<p>hora: $now</p>
+		
+		#foreach($en in $now)
 				<div>
-		 			<span>$en</span>
+		 			<span>$i</span>
 				</div> 
 		#end
     </main>

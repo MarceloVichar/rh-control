@@ -19,8 +19,27 @@ public class ExtraBenefit extends Benefit {
 	@Column(name = "extra_benefit_id")
 	private long id;
 	
+	@Column(name = "responsible")
+	private String responsible;
+	
 	@ManyToMany(mappedBy = "extraBenefits")
     private Set<Employee> employees = new HashSet<>();
+	
+	public String getResponsible() {
+		return responsible;
+	}
+
+	public void setResponsible(String responsible) {
+		this.responsible = responsible;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
+	}
 	
 	public long getId() {
 		return id;

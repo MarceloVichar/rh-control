@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.Table;
 
+import util.MyException;
+
 import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +42,7 @@ public class Employee implements BaseEntity{
 	@Column(name = "phone")
 	private String phone;
 	
-	@Column(name = "salary", nullable = false)
+	@Column(name = "salary")
 	private double salary;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -145,15 +147,21 @@ public class Employee implements BaseEntity{
 		this.salary = salary;
 	}
 	
-	public String getFormattedSalary() {
+	@SuppressWarnings("unused")
+	public String getFormattedSalary() throws MyException {
 		DecimalFormat df = new DecimalFormat("#,###.00");
 		String formattedSalary;
+		Double abc = 12.22;
 		
 		try {
+			if (abc == null) {
+				throw new MyException("O salário não pode ser formatado, pois não possui um valor válido");
+			}
 			formattedSalary = "R$" + df.format(this.salary);
+			
 		}
-		catch (NullPointerException e) {
-			System.out.println("O salário não pode ser formatado, pois não possui um valor válido");
+		catch (MyException e) {
+			System.out.println(e.getMessage());
 			formattedSalary = "Nada consta";
 		}
 		
